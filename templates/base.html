@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- BOOTSTRAPT -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/master.css' %}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark rounded fixed-top">
+        <div class="container">
+            <!-- Brand -->
+            <a href="{% url 'home' %}" class="navbar-brand">QuanPC eCommerce</a>
+
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                <!-- <li class="nav-item nav-hover"><a href="#" class="nav-link">Welcome</a></li>
+                <li class="nav-item nav-hover"><a href="#" class="nav-link">About</a></li>
+                <li class="nav-item nav-hover"><a href="#" class="nav-link">Contact</a></li> -->
+
+                <!-- Dropdown -->
+                <!-- <li class="nav-item dropdown nav-hover">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Dropdown link
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Link 1</a>
+                        <a class="dropdown-item" href="#">Link 2</a>
+                        <a class="dropdown-item" href="#">Link 3</a>
+                    </div>
+                </li> -->
+                <form class="form-inline" action="/s/" role="search">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" name='q'>
+                    <button class="btn btn-default" type="submit">Search</button>
+                </form>
+            </ul>
+
+            <!-- Links Right-->
+            <ul class="navbar-nav nav-right">
+                <!-- <li class="nav-item">
+                    <a href="{% url 'cart' %}" class="nav-link">Cart 
+                        <span class="badge badge-danger">{{ request.session.item_total }}</span>
+                    </a>
+                </li> -->
+                <li class="nav-item">
+                    <a href="{% url 'cart' %}" class="nav-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                            class="bi bi-cart" viewBox="0 0 16 16">
+                            <path
+                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                                <span class="badge badge-danger">{% if not request.session.item_total %} 0 {% else %} {{ request.session.item_total }} {% endif %}</span>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br>
+
+    <div class="content container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+
+</html>

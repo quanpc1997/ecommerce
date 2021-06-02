@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Search for: {{ q }}
+{% endblock %}
+
+
+{% block content %}
+<h2>Search for: {{ q }}</h2>
+<hr>
+<br/>
+{% if product_list %}
+    <div class="search-product-site row">
+        {% for item in product_list %}
+            <div class='col-sm-3'>
+                <h3><a href="{{ item.get_absolute_url }}"> {{ item.title}} </a></h3>
+                <p>{{ item.price }}</p>
+                {% for img in item.productimage_set.all %}
+                    <img src="{{ img.image.url }}" alt="" class="img-thumbnail">
+                {% endfor %}
+            </div>
+            {% cycle "" "" "" "</div><br/><hr><div class='row'>" %}
+        {% endfor %}
+    </div>
+{% else %}
+    <p>No result for your search</p>
+{% endif %}
+{% endblock %}
