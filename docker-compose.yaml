@@ -1,0 +1,11 @@
+version: '3.9'
+
+services:
+  mongodb:
+    image: hub.vtcc.vn:8989/mongo
+    container_name: mongodb_shopdev
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: ShopDEV
+    ports:
+      - "27017:27017"
