@@ -1,6 +1,3 @@
-export http_proxy=http://proxy.cyberspace.vn:3128
-export https_proxy=http://proxy.cyberspace.vn:3128
-
 https://viblo.asia/p/huong-dan-co-ban-framework-fastapi-tu-a-z-phan-1-V3m5W0oyKO7
 
 
